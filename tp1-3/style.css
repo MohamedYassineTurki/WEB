@@ -1,0 +1,41 @@
+body {
+    padding: 20px;
+}
+.todo-container {
+    display: flex;
+    justify-content: space-between;
+}
+.todo-list {
+    width: 60%;
+}
+.todo-form {
+    width: 35%;
+}
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.todo-item img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.delete-todo {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.task {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
