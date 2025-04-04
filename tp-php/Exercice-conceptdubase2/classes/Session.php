@@ -1,4 +1,6 @@
+
 <?php
+//j'ai pas pu travailler sans utiliser completement la variable $_SESSION car a chaque recharge de la page elle cree un nouvelle session donc le nombre de visite reste a 0
 class Session {
     // attributs
     private $id;
