@@ -1,0 +1,53 @@
+:root {
+    --rouge: #ff4757;
+    --jaune: #ffd32a;
+    --vert: #05c46b;
+    --dark: #2f3542;
+    --light: #f1f2f6;
+    --border: #dfe4ea;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 30px;
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    width: 300px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background-color: var(--dark);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.rouge {
+    background-color: var(--rouge);
+    color: white;
+    font-weight: bold;
+}
+
+.jaune {
+    background-color: var(--jaune);
+    color: #333;
+    font-weight: bold;
+}
