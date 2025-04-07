@@ -75,16 +75,17 @@ class Pokemon
      * Attaque un autre Pokémon.
      *
      * @param Pokemon $target Le Pokémon cible.
+     * @param int $coeifficient Coefficient d'attaque selon le type de pokemon(par défaut 1).
      */
 
-    public function attack(Pokemon $target, ): void
+    public function attack(Pokemon $target, int $coeifficient=1): void
     {
         $minAttack=$this->attackPokemon->getAttackMinimal();
         $maxAttack=$this->attackPokemon->getAttackMaximal();
         $specialAttack=$this->attackPokemon->getSpecialAttack();
         $probabilitySpecialAttack=$this->attackPokemon->getProbabilitySpecialAttack();
         
-        $attack = rand($minAttack, $maxAttack);
+        $attack = rand($minAttack, $maxAttack)*$coeifficient;
         if (rand(1, 100) <= $probabilitySpecialAttack) {
             $attack *= $specialAttack;
         }
