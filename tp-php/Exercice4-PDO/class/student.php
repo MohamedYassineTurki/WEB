@@ -2,27 +2,37 @@
 
 include_once "autoloader.php";
 
-class Student{
-    static private $bd;
+class Student {
+    private static $bdd;
 
-    private function __construct(){
+    private function __construct() {
     }
 
-    static function getBd() {
-        if (!self::$bd) {
-            self::$bd = ConnexionDB::getInstance();
+    public static function getBd() {
+        if (!self::$bdd) {
+            self::$bdd = ConnexionDB::getInstance();
         }
-        return self::$bd;
-    }
-    static function addStudent($id, $name, $birth_date){
-        $req = self::getBd()->prepare('select * from student where id=?');
-        $req->execute(array($id));
-        if($req->fetch(PDO::FETCH_ASSOC)==null)
-        {
-            $req = self::getBd()->prepare('insert into students (id, nom, birth_date) values(?,?,?)');
-            $req->execute(array($id, $name, $birth_date));
-        }
+        return self::$bdd;
     }
 
+    public static function addStudent($name, $birth_date) {
+        //Ading student only after checking if it exist's or not
+        $sql = "SELECT COUNT(*) FROM students WHERE nom = :name AND birth_date = :birth_date";
+        $stmt = self::getBd()->prepare($sql);
+        $stmt->execute([
+            ':name' => $name,
+            ':birth_date' => $birth_date
+        ]);
+        $count = $stmt->fetchColumn();
+        if ($count == 0) {
+            $sql = "INSERT INTO students (nom, birth_date) VALUES (:name, :birth_date)";
+            $stmt = self::getBd()->prepare($sql);
+            $stmt->execute([
+                ':name' => $name,
+                ':birth_date' => $birth_date
+            ]);
+        }
+    }
 }
+?>
 ?>

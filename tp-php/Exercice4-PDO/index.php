@@ -1,12 +1,19 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <?php 
 $pageTitle="Home";
 include 'autoloader.php';
+include_once 'class/connexionDB.php';
+include_once 'class/student.php';
 
-student::addStudent("1","Yassine","2005-07-01");
-student::addStudent("2","Mariem","2004-21-06");
-student::addStudent("3","khalil","2004-16-08");
+student::addStudent("Yassine", "2005-07-01");
+student::addStudent("Mariem", "2004-06-21");
+student::addStudent("Khalil", "2004-08-16");
 
-$query="SELECT * FROM students";
+$query="SELECT id,nom AS name, birth_date FROM students";
 $req=student::getBd()->query($query);
 $students=$req->fetchAll(PDO::FETCH_OBJ);
 
@@ -42,6 +49,6 @@ $students=$req->fetchAll(PDO::FETCH_OBJ);
                 <?php endforeach ?>
             </tbody>
             </table>
-    </div>            
+        </div>            
 </body>
 </html>
