@@ -1,17 +1,17 @@
 <?php
 require_once 'Pokemon.php';
 
-class PokemonPlante extends Pokemon {
+class PokemonFeu extends Pokemon {
     public function __construct(string $name, string $url, int $hp, AttackPokemon $attackPokemon) {
         parent::__construct($name, $url, $hp, $attackPokemon);
     }
-    public function attack(Pokemon $target){
+    public function attack(Pokemon $target, int $coeifficient=1):void{
         if ($target instanceof PokemonPlante) {
-            $this->attack($target,2);
+            parent::attack($target,2);
         } elseif ($target instanceof PokemonPlante || $target instanceof PokemonEau) {
-            $this->attack($target,0.5);
+            parent::attack($target,0.5);
         }else {
-            $this->attack($target,1);
+            parent::attack($target,1);
         }
     }
 }

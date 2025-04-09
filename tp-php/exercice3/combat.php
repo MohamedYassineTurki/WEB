@@ -19,7 +19,7 @@ function combat(Pokemon $a, Pokemon $b)
         }
         $b->attack($a);
         if ($a->getHp() <= 0) {
-            echo "<div class='alert alert-success' role='alert'>{Le gagnant est {$b->getName()} <img src='{$b->getUrl()}' alt='{$b->getName()}'></div>";
+            echo "<div class='alert alert-success' role='alert'>Le gagnant est {$b->getName()} <img src='{$b->getUrl()}' alt='{$b->getName()}'></div>";
             return;
         }
         resultat($round, $a, $b);

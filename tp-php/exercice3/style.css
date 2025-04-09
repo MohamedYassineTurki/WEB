@@ -86,3 +86,26 @@ body {
 .alert {
     text-align: center;
 }
+.alert img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+.selection-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.selection-label {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 3px #5b5a5a;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+
