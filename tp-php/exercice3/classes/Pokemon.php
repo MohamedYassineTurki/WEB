@@ -28,17 +28,14 @@ class Pokemon
     {
         return $this->name;
     }
-
     public function getHp(): int
     {
         return $this->hp;
     }
-
     public function getUrl(): string
     {
         return $this->url;
     }
-
     public function getAttackPokemon(): AttackPokemon
     {
         return $this->attackPokemon;
@@ -50,22 +47,20 @@ class Pokemon
     {
         $this->name = $name;
     }
-
     public function setHp(int $hp): void
     {
         $this->hp = $hp;
     }
-
     public function setUrl(string $url): void
     {
         $this->url = $url;
     }
-
     public function setAttackPokemon(AttackPokemon $attackPokemon): void
     {
         $this->attackPokemon = $attackPokemon;
     }
 
+    
     public function isDead(): bool
     {
         return $this->hp <= 0;
@@ -96,16 +91,14 @@ class Pokemon
             $target->setHp($target->getHp() - $attack);
         }
     }
-
-    public function whoAmI()
-    {
-        echo "Nom : {$this->name}<br>";
-        echo "<img src=\"{$this->url}\" alt=\"{$this->name}\" style=\"max-width: 200px; height: auto;\"><br>"; // Affichage de l'image   
-        echo "Les points de vie : {$this->hp}<br>";
-        echo "Attaque minimale : {$this->attackPokemon->getAttackMinimal()}<br>";
-        echo "Attaque maximale : {$this->attackPokemon->getAttackMaximal()}<br>";
-        echo "Coefficient attaque spéciale : {$this->attackPokemon->getSpecialAttack()}<br>";
-        echo "Probabilité attaque spéciale : {$this->attackPokemon->getProbabilitySpecialAttack()}%<br>";
-        echo "\n";
+    public function whoAmI() {
+        echo "<div class='pokemon-card'>";
+        echo "<p>{$this->getName()}</p>";
+        echo "<img src='{$this->getUrl()}' alt='{$this->getName()}'>";
+        echo "<p>Points de vie:{$this->getHp()}</p>";
+        echo "<p>Attaque minimale: {$this->getAttackPokemon()->getAttackMinimal()}</p>";
+        echo "<p>Attaque maximale: {$this->getAttackPokemon()->getAttackMaximal()}</p>";
+        echo "<p>Coefficient attaque spéciale: {$this->getAttackPokemon()->getSpecialAttack()}</p>";
+        echo "</div>";
     }
 }

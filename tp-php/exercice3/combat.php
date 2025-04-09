@@ -10,21 +10,36 @@ require_once __DIR__ . '/classes/Pokemon.php';
  */
 function combat(Pokemon $a, Pokemon $b)
 {
-    while (!($a->isDead()) && !($b->isDead())) {
+    $round=1;
+    while (!$a->isDead() && !$b->isDead()) {
         $a->attack($b);
-        echo "{$b->getName()} a maintenant {$b->getHp()} HP.<br>";
-        
         if ($b->getHp() <= 0) {
-            echo "{$b->getName()} est KO !\nLe gagnant est {$a->getName()} !<br>";
+            echo "<div class='alert alert-success' role='alert'>Le gagnant est {$a->getName()}<img src='{$a->getUrl()}' alt='{$a->getName()}'></div>";
             break;
         }
-        
         $b->attack($a);
-        echo "{$a->getName()} a maintenant {$a->getHp()} HP.<br>";
-        
         if ($a->getHp() <= 0) {
-            echo "{$a->getName()} est KO !\nLe gagnant est {$b->getName()} !<br>";
-            break;
+            echo "<div class='alert alert-success' role='alert'>{Le gagnant est {$b->getName()} <img src='{$b->getUrl()}' alt='{$b->getName()}'></div>";
+            return;
         }
+        resultat($round, $a, $b);
+        $round++;
     }
 }
+
+function resultat(int $round ,Pokemon $a, Pokemon $b)
+{
+    echo "<div class='round-label'>ROUND $round";
+    echo "<div class='round-results-container'>";
+    echo "<p class='round-result'>{$a->getName()} :{$a->getHp()} HP</p>";
+    echo "<p class='round-result'>{$b->getName()} :{$b->getHp()} HP</p>";
+    echo "</div>";
+    echo "</div>";
+    echo "<div class='pokemon-container'>";
+    $a->whoAmI();
+    $b->whoAmI();
+    echo "</div>";
+}
+
+
+?>
